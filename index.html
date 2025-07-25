@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id" x-data="{ lang: 'id', navOpen: false }" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fajrian | Developer & Links</title>
+  <link rel="icon" href="yourfavicon.ico" type="image/x-icon" />
+
+  <!-- Tailwind CSS + Alpine.js + AOS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@600&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Roboto', sans-serif; }
+    .font-orbitron { font-family: 'Orbitron', sans-serif; }
+    .text-glow { text-shadow: 0 0 6px rgba(255, 255, 255, 0.25); }
+    .btn-link {
+      background-color: #00796B;
+      border-radius: 9999px;
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+      padding: 1rem;
+      color: white;
+      font-size: 1.125rem;
+      font-weight: 600;
+      text-align: center;
+      transition: all 0.3s ease;
+      display: block;
+      width: 100%;
+    }
+    .btn-link:hover {
+      box-shadow: 0 0 20px rgba(255, 255, 255, 1);
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body class="bg-black text-white" x-init="AOS.init({ duration: 800, once: true })">
+
+  <!-- Navbar -->
+  <header class="sticky top-0 z-50 bg-black bg-opacity-90 border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-xl md:text-2xl font-orbitron tracking-widest">Fajrian.Dev</h1>
+      <nav class="hidden md:flex space-x-6 text-sm md:text-base">
+        <a href="#about" class="hover:text-teal-400 transition">About</a>
+        <a href="#projects" class="hover:text-teal-400 transition">Projects</a>
+        <a href="#contact" class="hover:text-teal-400 transition">Contact</a>
+        <a href="#links" class="hover:text-teal-400 transition">Links</a>
+      </nav>
+      <!-- Language Toggle -->
+      <div class="flex items-center space-x-3">
+        <button class="text-xs text-gray-300 border px-2 py-1 rounded hover:bg-gray-800" @click="lang = 'id'">ID</button>
+        <button class="text-xs text-gray-300 border px-2 py-1 rounded hover:bg-gray-800" @click="lang = 'en'">EN</button>
+      </div>
+      <button @click="navOpen = !navOpen" class="md:hidden focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path x-show="!navOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <div x-show="navOpen" class="md:hidden px-4 pb-4 space-y-2">
+      <a href="#about" class="block hover:text-teal-400">About</a>
+      <a href="#projects" class="block hover:text-teal-400">Projects</a>
+      <a href="#contact" class="block hover:text-teal-400">Contact</a>
+      <a href="#links" class="block hover:text-teal-400">Links</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- About Section -->
+    <section class="flex flex-col md:flex-row min-h-[85vh]">
+      <div class="md:w-1/2 h-[60vh] md:h-auto">
+        <img src="https://i.imgur.com/sN7uBDj.jpg" alt="Fajrian" class="object-cover w-full h-full shadow-lg brightness-90" />
+      </div>
+      <div id="about" class="md:w-1/2 bg-[#121212] border-t md:border-t-0 md:border-l border-gray-700 flex flex-col justify-center px-6 md:px-12 py-10 space-y-6" data-aos="fade-left">
+        <h2 class="text-3xl font-orbitron tracking-widest" x-text="lang === 'id' ? 'Tentang Saya' : 'About Me'"></h2>
+        <p class="text-gray-200 text-glow leading-relaxed">
+          <span x-show="lang === 'id'">
+            Fajrian Dev adalah developer web berusia 15 tahun, siswa kelas 9 SMP. Saya fokus membangun website yang menarik dan responsif menggunakan 
+            <span class="text-teal-400 font-semibold">Tailwind CSS</span> dan 
+            <span class="text-yellow-400 font-semibold">JavaScript</span>.
+          </span>
+          <span x-show="lang === 'en'">
+            Fajrian Dev is a 15-year-old web developer, currently a 9th-grade student. I focus on building attractive and responsive websites using 
+            <span class="text-teal-400 font-semibold">Tailwind CSS</span> and 
+            <span class="text-yellow-400 font-semibold">JavaScript</span>.
+          </span>
+        </p>
+        <a href="#projects" class="inline-block mt-4 bg-teal-500 hover:bg-teal-400 text-black font-bold py-2 px-6 rounded-full transition transform hover:scale-105 shadow-lg" x-text="lang === 'id' ? 'Lihat Proyek Fajrian' : 'View Fajrian Projects'"></a>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-6 bg-black text-center border-t border-gray-800">
+      <h2 class="text-3xl font-orbitron mb-10" data-aos="fade-up" x-text="lang === 'id' ? 'Proyek' : 'Projects'"></h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+        <div class="bg-gray-800 rounded-xl shadow-lg p-6 text-left hover:scale-105 transition">
+          <h3 class="text-xl font-semibold text-teal-400 mb-2">Portfolio Website</h3>
+          <p class="text-gray-300 text-sm" x-text="lang === 'id' ? 'Website portofolio responsif menggunakan Tailwind CSS.' : 'Responsive portfolio using Tailwind CSS.'"></p>
+        </div>
+        <div class="bg-gray-800 rounded-xl shadow-lg p-6 text-left hover:scale-105 transition">
+          <h3 class="text-xl font-semibold text-teal-400 mb-2">JavaScript Game</h3>
+          <p class="text-gray-300 text-sm" x-text="lang === 'id' ? 'Game browser sederhana dengan JavaScript dan Canvas.' : 'Simple browser game using JavaScript and Canvas.'"></p>
+        </div>
+        <div class="bg-gray-800 rounded-xl shadow-lg p-6 text-left hover:scale-105 transition">
+          <h3 class="text-xl font-semibold text-teal-400 mb-2">Landing Page</h3>
+          <p class="text-gray-300 text-sm" x-text="lang === 'id' ? 'Landing page promosi dengan animasi modern.' : 'Marketing landing page with modern animations.'"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Links Section -->
+    <section id="links" class="py-20 px-4 bg-[#111] text-center border-t border-gray-800">
+      <h2 class="text-3xl font-orbitron mb-10" data-aos="fade-up" x-text="lang === 'id' ? 'Sosial Media Saya' : 'My Social Links'"></h2>
+      <div class="w-full max-w-sm mx-auto space-y-6">
+        <a href="https://wa.me/6281218121416" target="_blank" class="btn-link font-orbitron" data-aos="fade-up">CHAT WA FAJRIAN</a>
+        <a href="https://www.tiktok.com/@thinkeriaa?_t=ZP-8yEeiZBjuHu&_r=1" target="_blank" class="btn-link font-orbitron" data-aos="fade-up" data-aos-delay="100">ACCOUNT TIKTOK KE 1</a>
+        <a href="https://www.tiktok.com/@malakaspeaking?_t=ZS-8yEhM14A1cC&_r=1" target="_blank" class="btn-link font-orbitron" data-aos="fade-up" data-aos-delay="200">ACCOUNT TIKTOK KE 2</a>
+        <a href="https://saweria.co/supportian" target="_blank" class="btn-link font-orbitron" data-aos="fade-up" data-aos-delay="300">SUPPORT BUILDING WEB</a>
+        <a href="https://lynk.id/iancakra" target="_blank" class="btn-link font-orbitron" data-aos="fade-up" data-aos-delay="400">LYNK.ID PRODUK DIGITAL</a>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6 bg-gray-900 text-center border-t border-gray-800">
+      <h2 class="text-3xl font-orbitron mb-6" data-aos="fade-up" x-text="lang === 'id' ? 'Kontak' : 'Contact'"></h2>
+      <p class="text-gray-300" data-aos="fade-up" data-aos-delay="100">
+        <span x-show="lang === 'id'">Email saya di</span>
+        <span x-show="lang === 'en'">Email me at</span>
+        <a href="mailto:fajjrian@proton.me" class="text-teal-400 underline hover:text-teal-300 transition">fajjrian@proton.me</a>
+      </p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-center py-6 border-t border-gray-800">
+      <div class="flex justify-center space-x-6 text-2xl text-gray-400">
+        <a href="https://github.com/yourusername" target="_blank" class="hover:text-white transition"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/yourusername" target="_blank" class="hover:text-white transition"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:fajjrian@proton.me" class="hover:text-white transition"><i class="fas fa-envelope"></i></a>
+      </div>
+      <p class="text-sm text-gray-500 mt-4">&copy; 2025 Fajrian. All rights reserved.</p>
+    </footer>
+  </main>
+
+  <!-- Font Awesome (Replace with real kit ID) -->
+  <script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
